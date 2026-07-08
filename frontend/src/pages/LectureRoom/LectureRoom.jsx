@@ -657,7 +657,7 @@ function LectureRoom() {
       // Bearer token, matching how reportService.js authorises its calls.
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:5000/api/reports",
+        `${import.meta.env.VITE_API_URL}/api/reports`,
         {
           averageAttention: finalAverageAttention,
           sessionTime:      finalSessionTime,
