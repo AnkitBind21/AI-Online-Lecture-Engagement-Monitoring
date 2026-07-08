@@ -1,15 +1,7 @@
-/**
- * src/services/roomService.js
- *
- * Thin axios wrapper around the room REST API.
- * The joinRoomApi function is called by StudentLogin BEFORE the socket
- * join-room event so MongoDB has the student registered in the room's
- * students array.  All other exports are unchanged.
- */
 
 import axios from "axios";
 
-const API = "http://localhost:5000/api/rooms";
+const API = `${import.meta.env.VITE_API_URL}/api/rooms`;
 
 // ── Create a room (teacher, authenticated) ────────────────────────────────────
 export const createRoom = async (roomName) => {
