@@ -1,31 +1,3 @@
-src/pages/LectureRoom/LectureRoom.jsx
-/**
- * LectureRoom.jsx
- *
- * Changes vs previous version (MediaPipe / analytics / camera untouched):
- *
- *  FEATURE 1 — Live AI data broadcast
- *    Students emit "attention-update" every second with their current AI
- *    metrics.  Six mirror-refs (attentionStateRef, eyeStatusRef, etc.) are
- *    kept in sync by runFaceDetection so the interval always reads fresh
- *    values without stale-closure problems.
- *
- *  FEATURE 2 — Leave Lecture button (students only)
- *    leaveLecture(): emit leave-room → disconnect socket → stopCamera → navigate("/")
- *    Students never see the "End" button.
- *
- *  FEATURE 3 — End Lecture button (teacher only)
- *    endMeeting() is unchanged.  The End button is conditionally rendered
- *    only for role === "teacher".
- *
- *  FEATURE 4 — Instant participant removal
- *    Already handled by socketServer handleLeave → emitParticipants.
- *    No client changes required.
- *
- *  FEATURE 5 — Teacher sees live AI per student
- *    participants state now carries AI fields from the server.
- *    StudentCard receives all six fields as props.
- */
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
