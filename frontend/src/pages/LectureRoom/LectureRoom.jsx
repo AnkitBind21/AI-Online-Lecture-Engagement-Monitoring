@@ -476,36 +476,46 @@ function LectureRoom() {
     try {
         const devices = await navigator.mediaDevices.enumerateDevices();
 
-        const preferredCamera =
-          devices.find(
-            d =>
-              d.kind === "videoinput" &&
-              !d.label.includes("OBS")
-          );
-
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            deviceId: {
-              exact: preferredCamera.deviceId,
-            },
-          },
-          audio: false,
-        });
-
-        console.log(
-          "Camera opened:",
-          stream.getVideoTracks()[0].label
+        const preferredCamera = devices.find(
+          (d) => d.kind === "videoinput" && !d.label.includes("OBS")
         );
 
-        const track = stream.getVideoTracks()[0];
+        let stream;
 
-        console.log("Camera opened:", track.label);
+        try {
+          if (preferredCamera) {
+            stream = await navigator.mediaDevices.getUserMedia({
+              video: {
+                deviceId: {
+                  exact: preferredCamera.deviceId,
+                },
+              },
+              audio: false,
+            });
+          } else {
+            throw new Error("No preferred camera found");
+          }
+        } catch (err) {
+          console.warn(
+            "Preferred camera unavailable, switching to default camera..."
+          );
+
+          stream = await navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false,
+          });
+        }
+
+        console.log("Camera opened:", stream.getVideoTracks()[0].label);
+
+        const track = stream.getVideoTracks()[0];
+        console.log(track.label);
         console.log(track.getSettings());
 
-      console.log("Camera stream started");
+        console.log("Camera stream started");
 
-      streamRef.current = stream;
-      setCameraOn(true);
+        streamRef.current = stream;
+        setCameraOn(true);
 
       if (!sessionActive) setSessionActive(true);
 
