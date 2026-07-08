@@ -18,7 +18,8 @@ export const initializeFaceDetector = async () => {
           "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/latest/face_landmarker.task"
       },
       runningMode: "VIDEO",
-      numFaces: 1
+      numFaces: 10
+      
     }
   );
 
@@ -36,4 +37,19 @@ export const detectFace = (
     video,
     timestamp
   );
+};
+
+export const getEyeStatus = (landmarks) => {
+  // Left eye landmarks
+  const top = landmarks[159];
+  const bottom = landmarks[145];
+
+  // Eye opening distance
+  const eyeHeight = Math.abs(top.y - bottom.y);
+
+  if (eyeHeight < 0.015) {
+    return "Closed";
+  }
+
+  return "Open";
 };
