@@ -775,11 +775,15 @@ export default function TeacherDashboard() {
       const token = localStorage.getItem("token");
 
       // 1. Activate the session in MongoDB
-      await axios.post(
-        `http://localhost:5000/api/rooms/${finalCode}/start`,
-        {},
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+        await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/rooms/${finalCode}/start`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
       // 2. Connect socket + join the room early so the teacher is present
       //    before any student arrives
