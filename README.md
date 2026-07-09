@@ -199,23 +199,75 @@ npm run dev
 
 ---
 
-# Screenshots
+# Application Screenshots
 
-> Add screenshots or GIFs of:
+## Home Page
 
-- Home Page
-- Teacher Dashboard
-- Student Dashboard
-- Lecture Room
-- Live Analytics
-- Reports
+<p align="center">
+  <img src="./Screenshots/home.png" alt="Home Page" width="1000"/>
+</p>
+
+---
+
+## Teacher Dashboard
+
+<p align="center">
+  <img src="./Screenshots/Dashboard.png" alt="Teacher Dashboard" width="1000"/>
+</p>
+
+---
+
+## Create Lecture Room
+
+<p align="center">
+  <img src="./Screenshots/CreateRoom.png" alt="Create Room" width="1000"/>
+</p>
+
+---
+
+## Live Lecture Monitoring
+
+<p align="center">
+  <img src="./Screenshots/Lectureroom.png" alt="Lecture Room" width="1000"/>
+</p>
+
+---
+
+## AI Attention Analysis
+
+<p align="center">
+  <img src="./Screenshots/Lectureoom1.png" alt="AI Analysis" width="1000"/>
+</p>
+
+---
+
+## Analytics & Reports
+
+<p align="center">
+  <img src="./Screenshots/Report.png" alt="Reports Dashboard" width="1000"/>
+</p>
+
+---
+
+## Report Generation
+
+<p align="center">
+  <img src="./Screenshots/reportgen.png" alt="Generated Report" width="1000"/>
+</p>
+
+---
+
+## PDF Report Export
+
+<p align="center">
+  <img src="./Screenshots/reportgen2.png" alt="PDF Export" width="1000"/>
+</p>
 
 ---
 
 # Future Enhancements
 
 - Emotion Recognition
-- Multi-face Classroom Monitoring
 - Mobile Device Support
 - Attendance Export
 - AI-based Engagement Prediction
